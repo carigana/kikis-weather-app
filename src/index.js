@@ -37,7 +37,21 @@ function enterCity(event) {
 let cityForm = document.querySelector("#city-search");
 cityForm.addEventListener("submit", enterCity);
 
-// api call
+// search current location
+function searchLocation(position) {
+  let apiKey = "1f983d213665d2d7dbab69270eb302b3";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+// api call City
 
 function searchCity(cityInput) {
   let apiKey = "1f983d213665d2d7dbab69270eb302b3";
@@ -65,3 +79,10 @@ function showWeather(response) {
     response.data.main.temp_max
   );
 }
+
+// current
+let currentLocation = document.querySelector("#current");
+currentLocation.addEventListener("click", getCurrentLocation);
+
+// default city
+searchCity("Osaka");
