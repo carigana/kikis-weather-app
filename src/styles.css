@@ -15,6 +15,9 @@ a:active {
 form {
   text-align: right;
 }
+small {
+  color: #efddb2;
+}
 .body {
   border: 0px;
 }
