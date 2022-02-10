@@ -1,13 +1,4 @@
 let now = new Date();
-// days of the week
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-let today = days[now.getDay()];
-console.log(today);
-
-let spanDate = document.querySelector("#date");
-spanDate.innerHTML = today;
-
 // current time
 function currentTime(now) {
   let hours = now.getHours();
@@ -18,13 +9,14 @@ function currentTime(now) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let newTime = `${hours}:${minutes}`;
   return newTime;
 }
-
-let spanTime = document.querySelector("#time");
-spanTime.innerHTML = currentTime(now);
+// days of the week
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let today = days[now.getDay()];
+document.querySelector("#date").innerHTML = today;
+document.querySelector("#time").innerHTML = currentTime(now);
 
 // search bar
 function enterCity(event) {
@@ -78,11 +70,35 @@ function showWeather(response) {
   document.querySelector("#red-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
+
+  celTemp = response.data.main.temp;
 }
+
+//
 
 // current
 let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", getCurrentLocation);
+
+// cel-fa temp
+function showFaTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+  let faTemp = (celTemp * 9) / 5 + 32;
+
+  tempElement.innerHTML = Math.round(faTemp);
+}
+function showCelTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(celTemp);
+}
+
+let celTemp = null;
+let fahrenheitLink = document.querySelector("#fa-link");
+fahrenheitLink.addEventListener("click", showFaTemp);
+let celciusLink = document.querySelector("#cel-link");
+celciusLink.addEventListener("click", showCelTemp);
 
 // default city
 searchCity("Osaka");
