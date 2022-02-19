@@ -6,6 +6,7 @@ body {
   color: black;
   font-family: "Space Grotesk", sans-serif;
 }
+
 a,
 a:visited,
 a:hover,
@@ -21,10 +22,13 @@ small {
 .body {
   border: 0px;
 }
+
 .main-card {
   padding: 8px 20px;
   border: 3px solid rgb(251, 206, 143);
   border-radius: 6px;
+  background-image: url("img/background.png");
+  background-size: cover;
 }
 .btn {
   color: rgb(118, 162, 229);
@@ -53,7 +57,9 @@ small {
 .place-time {
   background-color: rgba(245, 245, 245, 0);
 }
-
+.main-temp {
+  font-size: 30px;
+}
 .wkd-icon {
   color: #efddb2;
   font-size: 30px;
