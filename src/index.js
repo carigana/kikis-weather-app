@@ -56,6 +56,13 @@ function searchCity(cityInput) {
 
 function showWeather(response) {
   console.log(response);
+
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -70,6 +77,9 @@ function showWeather(response) {
   document.querySelector("#red-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
+
+  document.querySelector("#we-description").innerHTML =
+    response.data.weather[0].main;
 
   celTemp = response.data.main.temp;
 }
