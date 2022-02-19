@@ -33,6 +33,8 @@ small {
 .btn {
   color: rgb(118, 162, 229);
   border-color: rgb(118, 162, 229);
+  max-height: fit-content;
+  font-size: 12px;
 }
 .weather {
   padding: 20px 0px 20px 0px;
@@ -43,6 +45,9 @@ small {
 .current-temp,
 .city {
   padding: 0;
+}
+.city-input {
+  max-height: 30px;
 }
 .place-time {
   border: 0px;
