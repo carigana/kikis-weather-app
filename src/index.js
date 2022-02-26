@@ -24,6 +24,8 @@ function enterCity(event) {
   let cityInput = document.querySelector("#enter-city").value;
   searchCity(cityInput);
   console.log(cityInput.value);
+  let searchInput = document.querySelector("#enter-city");
+  searchInput.value = "";
 }
 
 let cityForm = document.querySelector("#city-search");
