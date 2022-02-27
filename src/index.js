@@ -37,14 +37,60 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
+      let iconElement = "";
+      if (
+        forecastDay.weather[0].icon === "01d" ||
+        forecastDay.weather[0].icon === "01n"
+      ) {
+        iconElement = "fas fa-sun";
+      } else if (
+        forecastDay.weather[0].icon === "02d" ||
+        forecastDay.weather[0].icon === "02n"
+      ) {
+        iconElement = "fas fa-cloud-sun";
+      } else if (
+        forecastDay.weather[0].icon === "03d" ||
+        forecastDay.weather[0].icon === "03n"
+      ) {
+        iconElement = "fas fa-cloud";
+      } else if (
+        forecastDay.weather[0].icon === "04d" ||
+        forecastDay.weather[0].icon === "04n"
+      ) {
+        iconElement = "fas fa-cloud";
+      } else if (
+        forecastDay.weather[0].icon === "09d" ||
+        forecastDay.weather[0].icon === "09n"
+      ) {
+        iconElement = "fas fa-cloud-showers-heavy";
+      } else if (
+        forecastDay.weather[0].icon === "10d" ||
+        forecastDay.weather[0].icon === "10n"
+      ) {
+        iconElement = "fas fa-cloud-rain";
+      } else if (
+        forecastDay.weather[0].icon === "11d" ||
+        forecastDay.weather[0].icon === "11n"
+      ) {
+        iconElement = "fas fa-bolt";
+      } else if (
+        forecastDay.weather[0].icon === "13d" ||
+        forecastDay.weather[0].icon === "13n"
+      ) {
+        iconElement = "fas fa-snowflake";
+      } else if (
+        forecastDay.weather[0].icon === "50d" ||
+        forecastDay.weather[0].icon === "50n"
+      ) {
+        iconElement = "fas fa-water";
+      }
+
       forecastHTML =
         forecastHTML +
         `	
 		<div class="col">
       ${formatDay(forecastDay.dt)} <br />
-      <img class="wkd-icon" src="http://openweathermap.org/img/wn/${
-        forecastDay.weather[0].icon
-      }@2x.png" /> <br />
+      <i class="${iconElement}" id="wkd-icon"></i> <br />
       <span class="low-temp">${Math.round(
         forecastDay.temp.min
       )}°</span> <span class="divider">/</span> <span class="high-temp">${Math.round(
@@ -106,13 +152,6 @@ function getForecast(coordinates) {
 // show weather
 
 function showWeather(response) {
-  // document
-  //   .querySelector("#icon")
-  //   .setAttribute(
-  //     "src",
-  //     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  //   );
-
   let iconElement = document.querySelector("#today-icon");
   if (
     response.data.weather[0].icon === "01d" ||

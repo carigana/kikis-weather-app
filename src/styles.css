@@ -7,6 +7,7 @@
 }
 body {
   width: fit-content;
+  min-width: 600px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -83,7 +84,7 @@ small {
   font-size: 35px;
 }
 
-.wkd-icon {
+#wkd-icon {
   color: #efddb2;
   font-size: 30px;
 }
