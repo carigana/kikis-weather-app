@@ -42,8 +42,8 @@ small {
   background-size: cover;
 }
 .btn {
-  color: #1d556f;
-  border-color: #1d556f;
+  color: #305973;
+  border-color: #305973;
   max-height: fit-content;
   font-size: 12px;
   border: none;
@@ -91,11 +91,11 @@ small {
 }
 
 #wkd-icon {
-  color: #ffff;
+  color: #ded5c4;
   font-size: 35px;
 }
 #wkd-icon:hover {
-  color: #1d556f;
+  color: #305973;
 }
 .conditions {
   font-size: 14px;
@@ -103,7 +103,7 @@ small {
 .date,
 .time,
 .conditions {
-  color: #1d556f;
+  color: #305973;
 }
 
 .low-temp {
@@ -111,7 +111,7 @@ small {
   font-weight: bold;
 }
 .high-temp {
-  color: #e8630a;
+  color: #ef7e56;
   font-weight: bold;
 }
 .wkd-temps .low-temp {
@@ -120,8 +120,8 @@ small {
 
 #today-icon {
   font-size: 70px;
-  color: #fdb44b;
+  color: #ded5c4;
 }
 #today-icon:hover {
-  color: #1d556f;
+  color: #305973;
 }
