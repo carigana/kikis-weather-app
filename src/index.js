@@ -18,25 +18,39 @@ let today = days[now.getDay()];
 document.querySelector("#date").innerHTML = today;
 document.querySelector("#time").innerHTML = currentTime(now);
 
+//format timestamp to weekday- forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  return days[day];
+}
 // forecast
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   let forecastHTML = `<div class="row weekdays">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `	
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `	
 		<div class="col">
-      ${day} <br />
-      <i class="fas fa-cloud-sun wkd-icon"></i> <br />
-      <span class="low-temp">-25°</span> <span class="divider">/</span> <span class="high-temp">30°</span>
+      ${formatDay(forecastDay.dt)} <br />
+      <img class="wkd-icon" src="http://openweathermap.org/img/wn/${
+        forecastDay.weather[0].icon
+      }@2x.png" /> <br />
+      <span class="low-temp">${Math.round(
+        forecastDay.temp.min
+      )}°</span> <span class="divider">/</span> <span class="high-temp">${Math.round(
+          forecastDay.temp.max
+        )}°</span>
 		</div>
 	`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -78,7 +92,7 @@ function searchCity(cityInput) {
 
   axios.get(apiUrl).then(showWeather);
 }
-// get lat and long for city for forecast
+// api call coordinates
 
 function getForecast(coordinates) {
   let apiKey = "1f983d213665d2d7dbab69270eb302b3";
