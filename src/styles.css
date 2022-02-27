@@ -51,7 +51,7 @@ small {
 .current-weather {
   border: 0px;
 }
-.current-temp,
+
 .city {
   padding: 0;
 }
@@ -76,6 +76,13 @@ small {
 .main-temp {
   font-size: 23px;
 }
+.temp-today {
+  padding: 0;
+  position: relative;
+  top: -15px;
+  font-size: 35px;
+}
+
 .wkd-icon {
   color: #efddb2;
   font-size: 30px;
@@ -97,4 +104,7 @@ small {
 }
 .high-temp {
   color: #fa360a;
+}
+#today-icon {
+  font-size: 70px;
 }

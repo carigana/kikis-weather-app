@@ -18,6 +18,8 @@ let today = days[now.getDay()];
 document.querySelector("#date").innerHTML = today;
 document.querySelector("#time").innerHTML = currentTime(now);
 
+//fontawesome icons
+
 //format timestamp to weekday- forecast
 
 function formatDay(timestamp) {
@@ -104,12 +106,61 @@ function getForecast(coordinates) {
 // show weather
 
 function showWeather(response) {
-  document
-    .querySelector("#icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+  // document
+  //   .querySelector("#icon")
+  //   .setAttribute(
+  //     "src",
+  //     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  //   );
+
+  let iconElement = document.querySelector("#today-icon");
+  if (
+    response.data.weather[0].icon === "01d" ||
+    response.data.weather[0].icon === "01n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-sun");
+  } else if (
+    response.data.weather[0].icon === "02d" ||
+    response.data.weather[0].icon === "02n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-cloud-sun");
+  } else if (
+    response.data.weather[0].icon === "03d" ||
+    response.data.weather[0].icon === "03n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-cloud");
+  } else if (
+    response.data.weather[0].icon === "04d" ||
+    response.data.weather[0].icon === "04n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-cloud");
+  } else if (
+    response.data.weather[0].icon === "09d" ||
+    response.data.weather[0].icon === "09n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
+  } else if (
+    response.data.weather[0].icon === "10d" ||
+    response.data.weather[0].icon === "10n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-cloud-rain");
+  } else if (
+    response.data.weather[0].icon === "11d" ||
+    response.data.weather[0].icon === "11n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-bolt");
+  } else if (
+    response.data.weather[0].icon === "13d" ||
+    response.data.weather[0].icon === "13n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-snowflake");
+  } else if (
+    response.data.weather[0].icon === "50d" ||
+    response.data.weather[0].icon === "50n"
+  ) {
+    iconElement.setAttribute("class", "fas fa-water");
+  }
+
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -139,25 +190,25 @@ function showWeather(response) {
 let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", getCurrentLocation);
 
-// cel-fa temp
-function showFaTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#current-temp");
-  let faTemp = (celTemp * 9) / 5 + 32;
+// // cel-fa temp
+// function showFaTemp(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#current-temp");
+//   let faTemp = (celTemp * 9) / 5 + 32;
 
-  tempElement.innerHTML = Math.round(faTemp);
-}
-function showCelTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = Math.round(celTemp);
-}
+//   tempElement.innerHTML = Math.round(faTemp);
+// }
+// function showCelTemp(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#current-temp");
+//   tempElement.innerHTML = Math.round(celTemp);
+// }
 
-let celTemp = null;
-let fahrenheitLink = document.querySelector("#fa-link");
-fahrenheitLink.addEventListener("click", showFaTemp);
-let celciusLink = document.querySelector("#cel-link");
-celciusLink.addEventListener("click", showCelTemp);
+// let celTemp = null;
+// let fahrenheitLink = document.querySelector("#fa-link");
+// fahrenheitLink.addEventListener("click", showFaTemp);
+// let celciusLink = document.querySelector("#cel-link");
+// celciusLink.addEventListener("click", showCelTemp);
 
 // default city
 searchCity("Osaka");
