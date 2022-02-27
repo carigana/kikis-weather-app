@@ -88,7 +88,7 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `	
-		<div class="col">
+		<div class="col wkd-temps">
       ${formatDay(forecastDay.dt)} <br />
       <i class="${iconElement}" id="wkd-icon"></i> <br />
       <span class="low-temp">${Math.round(

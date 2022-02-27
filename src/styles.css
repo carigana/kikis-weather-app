@@ -27,6 +27,8 @@ form {
 }
 small {
   color: #efddb2;
+  position: relative;
+  left: 25px;
 }
 .body {
   border: 0px;
@@ -40,8 +42,8 @@ small {
   background-size: cover;
 }
 .btn {
-  color: rgb(118, 162, 229);
-  border-color: rgb(118, 162, 229);
+  color: #1d556f;
+  border-color: #1d556f;
   max-height: fit-content;
   font-size: 12px;
   border: none;
@@ -55,6 +57,10 @@ small {
 
 .city {
   padding: 0;
+}
+#city {
+  padding-top: 30px;
+  font-size: 50px;
 }
 .city-input {
   max-height: 30px;
@@ -85,27 +91,37 @@ small {
 }
 
 #wkd-icon {
-  color: #efddb2;
-  font-size: 30px;
+  color: #ffff;
+  font-size: 35px;
 }
-.wkd-icon:hover {
+#wkd-icon:hover {
   color: #1d556f;
 }
 .conditions {
-  font-size: 12px;
+  font-size: 14px;
 }
 .date,
 .time,
 .conditions {
-  color: #288fb4;
+  color: #1d556f;
 }
 
 .low-temp {
-  color: #288fb4;
+  color: #00bbf0;
+  font-weight: bold;
 }
 .high-temp {
-  color: #fa360a;
+  color: #e8630a;
+  font-weight: bold;
 }
+.wkd-temps .low-temp {
+  color: #00bbf0;
+}
+
 #today-icon {
   font-size: 70px;
+  color: #fdb44b;
+}
+#today-icon:hover {
+  color: #1d556f;
 }
