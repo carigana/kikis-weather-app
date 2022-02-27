@@ -18,6 +18,30 @@ let today = days[now.getDay()];
 document.querySelector("#date").innerHTML = today;
 document.querySelector("#time").innerHTML = currentTime(now);
 
+// forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row weekdays">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `	
+		<div class="col">
+      ${day} <br />
+      <i class="fas fa-cloud-sun wkd-icon"></i> <br />
+      <span class="low-temp">-25°</span> <span class="divider">/</span> <span class="high-temp">30°</span>
+		</div>
+	`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // search bar
 function enterCity(event) {
   event.preventDefault();
@@ -114,3 +138,5 @@ celciusLink.addEventListener("click", showCelTemp);
 
 // default city
 searchCity("Osaka");
+
+displayForecast();
