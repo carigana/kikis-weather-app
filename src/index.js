@@ -18,8 +18,6 @@ let today = days[now.getDay()];
 document.querySelector("#date").innerHTML = today;
 document.querySelector("#time").innerHTML = currentTime(now);
 
-//fontawesome icons
-
 //format timestamp to weekday- forecast
 
 function formatDay(timestamp) {
@@ -228,26 +226,6 @@ function showWeather(response) {
 // current
 let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", getCurrentLocation);
-
-// // cel-fa temp
-// function showFaTemp(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#current-temp");
-//   let faTemp = (celTemp * 9) / 5 + 32;
-
-//   tempElement.innerHTML = Math.round(faTemp);
-// }
-// function showCelTemp(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#current-temp");
-//   tempElement.innerHTML = Math.round(celTemp);
-// }
-
-// let celTemp = null;
-// let fahrenheitLink = document.querySelector("#fa-link");
-// fahrenheitLink.addEventListener("click", showFaTemp);
-// let celciusLink = document.querySelector("#cel-link");
-// celciusLink.addEventListener("click", showCelTemp);
 
 // default city
 searchCity("Osaka");
